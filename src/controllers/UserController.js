@@ -56,10 +56,9 @@ export default {
       return res.status(400).json({ error: 'validation fails' })
     }
 
-    const { _id } = req.params
     const { name, email, oldPassword, password } = req.body
 
-    const user = await User.findById(_id)
+    const user = await User.findById(req.userId)
 
     // verified if exists old password for validit password
     if (oldPassword) {
