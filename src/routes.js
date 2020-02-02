@@ -11,6 +11,7 @@ routes.post('/user', UserController.store)
 routes.post('/user/session', SessionController.store)
 
 routes.get('/category', CategoryController.index)
+routes.get('/category/:_id', CategoryController.show)
 
 routes.use(authMiddleware)
 

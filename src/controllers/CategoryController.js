@@ -5,9 +5,23 @@ export default {
   async index(req, res) {
     const categories = await Category.find()
 
-    console.log(categories)
-
     res.json(categories)
+  },
+
+  async show(req, res) {
+    const { _id } = req.params
+
+    try {
+      const category = await Category.findOne({ _id: _id })
+
+      if (!category) {
+        return res.status(404).json({ error: 'category not found' })
+      }
+      console.log(category)
+      res.json(category)
+    } catch (error) {
+      console.log(error)
+    }
   },
 
   // create category
